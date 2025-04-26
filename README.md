@@ -142,13 +142,16 @@ def binarization_image(image, blur_value=5, kernel_erosion=(2, 2), kernel_dilati
   <img src="/Pictures/number1.jpg" width="400px"/>
 </div>
 
+
 <div display=flex align=center>
   <img src="/Pictures/6.jpg" width="400px"/>
 </div>
 
+
 <div display=flex align=center>
   <img src="/Pictures/number2.jpg" width="400px"/>
 </div>
+
 
 <div display=flex align=center>
   <img src="/Pictures/7.jpg" width="400px"/>
