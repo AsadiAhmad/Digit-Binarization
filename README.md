@@ -22,6 +22,118 @@ Binarization Digits of numbers and prepare digits for OCR or number detection an
 
 You can easily run this code on google colab by just clicking this badge [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AsadiAhmad/Digit-Binarization/blob/main/Code/Image_Binarization.ipynb)
 
+## Tutorial
+
+### Step 1: Import Libraries
+
+we need to import these libraries :
+
+`cv2`, `numpy`, `cv2_imshow`
+
+```sh
+import cv2 as cv
+from google.colab.patches import cv2_imshow
+import numpy as np
+```
+
+### Step 2: Download Image
+
+We need to Download the images from my `Github` repository or you can download others that have digits by your own.
+
+```sh
+!wget https://raw.githubusercontent.com/AsadiAhmad/Digit-Binarization/main/Pictures/number0.jpg -O number0.jpg
+!wget https://raw.githubusercontent.com/AsadiAhmad/Digit-Binarization/main/Pictures/number1.jpg -O number1.jpg
+!wget https://raw.githubusercontent.com/AsadiAhmad/Digit-Binarization/main/Pictures/number2.jpg -O number2.jpg
+```
+
+### Step 3: Load Images
+
+we need to load images into `python` variables we ues `OpenCV` library to read the images also the format of the images are `nd.array`
+
+```sh
+image = cv.imread('number0.jpg', cv.IMREAD_GRAYSCALE)
+```
+
+<img src="/Pictures/0.jpg"/>
+
+### Step 4: Image Binarization
+
+this is our primary state that we should remove noise with median filter and then use the adaptive thresholding for removing the background in each section of the image so we do not have any dark section in the image.
+
+```sh
+noise_removed = cv.medianBlur(image, 5)
+binary_image = cv.adaptiveThreshold(noise_removed, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY,11,2)
+```
+
+<img src="/Pictures/1.jpg"/>
+
+### Step 5: Invert the Binary Image
+
+For using the morpholgy in image processing we need to invert the images 
+
+```sh
+inverted_image = 255 - binary_image
+```
+
+<img src="/Pictures/2.jpg"/>
+
+### Step 6: Opening Image for Completely remove Noise
+
+Actually Opening have two section :
+
+1- Erosion for removing noise that are not eleminated by midan filter and created after biniarization the image.
+
+```sh
+kernel = np.ones((2, 2), np.uint8)
+erosion = cv.erode(inverted_image, kernel, iterations = 1)
+```
+
+<img src="/Pictures/3.jpg"/>
+
+2- Dilation for bolding the text because after the erosion we lose some part of the text so we need to refill the text.
+
+```sh
+kernel2 = np.ones((5, 5), np.uint8)
+dilation = cv.dilate(erosion, kernel2, iterations = 1)
+```
+
+<img src="/Pictures/4.jpg"/>
+
+### Step 7: Invert Image again
+
+we have an Image with white text and black background and we don't want this so we invert that again.
+
+```sh
+inverted_image2 = 255 - dilation
+```
+
+<img src="/Pictures/5.jpg"/>
+
+### Step 8: All together for other images
+
+so in this step we put all of things together and test that for other images.
+
+```sh
+def binarization_image(image, blur_value=5, kernel_erosion=(2, 2), kernel_dilation=(5, 5)):
+    noise_removed = cv.medianBlur(image, blur_value)
+    binary_image = cv.adaptiveThreshold(noise_removed, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY,11,2)
+    inverted_image = 255 - binary_image
+    kernel = np.ones(kernel_erosion, np.uint8)
+    erosion = cv.erode(inverted_image, kernel, iterations = 1)
+    kernel2 = np.ones(kernel_dilation, np.uint8)
+    dilation = cv.dilate(erosion, kernel2, iterations = 1)
+    inverted_image2 = 255 - dilation
+    return inverted_image2
+```
+
+<img src="/Pictures/51.jpg"/>
+
+<img src="/Pictures/6.jpg"/>
+
+<img src="/Pictures/51.jpg"/>
+
+<img src="/Pictures/7.jpg"/>
+
 ## License
 
 This project is licensed under the MIT License.
