@@ -142,20 +142,27 @@ def binarization_image(image, blur_value=5, kernel_erosion=(2, 2), kernel_dilati
   <img src="/Pictures/number1.jpg" width="400px"/>
 </div>
 
-
 <div display=flex align=center>
   <img src="/Pictures/6.jpg" width="400px"/>
 </div>
-
 
 <div display=flex align=center>
   <img src="/Pictures/number2.jpg" width="400px"/>
 </div>
 
-
 <div display=flex align=center>
   <img src="/Pictures/7.jpg" width="400px"/>
 </div>
+
+## Parameters
+
+these are parameters of the digit binarization.
+
+- blur_value : the format is like a number `5` higher value higher remove noise and sometime lose the parts of the main digit
+- kernel_erosion : the format is like a tuple `(2, 2)` this is a kernel for erosion higher value of this kernal can remove more noise but maybe we lose some part of the main digit
+- kernel_dilation : the format is like a tuple `(5, 5)` this is a kernel for dilation higher value of this kernel bolded the digit more and lower kernel value can make digit unreadable after the erosion!
+
+So for each image can vary depending on the size of the digit or size or shape of the noise.
 
 ## License
 
