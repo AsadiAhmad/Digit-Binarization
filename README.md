@@ -1,5 +1,5 @@
 # Digit-Binarization
-Binarization Digits of numbers and prepare digits for OCR or number detection and remove the noise from the picture compeletly.
+Binarization Digits of numbers and prepare digits for OCR or number detection and remove the noise and shadow (background) from the picture completely.
 
 
 ## Tech :hammer_and_wrench: Languages and Tools :
