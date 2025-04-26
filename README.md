@@ -55,7 +55,7 @@ image = cv.imread('number0.jpg', cv.IMREAD_GRAYSCALE)
 ```
 
 <div display=flex align=center>
-  <img src="/Pictures/0.jpg" width="600px"/>
+  <img src="/Pictures/0.jpg" width="400px"/>
 </div>
 
 ### Step 4: Image Binarization
@@ -68,7 +68,7 @@ binary_image = cv.adaptiveThreshold(noise_removed, 255, cv.ADAPTIVE_THRESH_GAUSS
 ```
 
 <div display=flex align=center>
-  <img src="/Pictures/1.jpg" width="600px"/>
+  <img src="/Pictures/1.jpg" width="400px"/>
 </div>
 
 ### Step 5: Invert the Binary Image
@@ -80,7 +80,7 @@ inverted_image = 255 - binary_image
 ```
 
 <div display=flex align=center>
-  <img src="/Pictures/2.jpg" width="600px"/>
+  <img src="/Pictures/2.jpg" width="400px"/>
 </div>
 
 ### Step 6: Opening Image for Completely remove Noise
@@ -95,7 +95,7 @@ erosion = cv.erode(inverted_image, kernel, iterations = 1)
 ```
 
 <div display=flex align=center>
-  <img src="/Pictures/3.jpg" width="600px"/>
+  <img src="/Pictures/3.jpg" width="400"/>
 </div>
 
 2- Dilation for bolding the text because after the erosion we lose some part of the text so we need to refill the text.
@@ -106,7 +106,7 @@ dilation = cv.dilate(erosion, kernel2, iterations = 1)
 ```
 
 <div display=flex align=center>
-  <img src="/Pictures/4.jpg" width="600px"/>
+  <img src="/Pictures/4.jpg" width="400px"/>
 </div>
 
 ### Step 7: Invert Image again
@@ -118,7 +118,7 @@ inverted_image2 = 255 - dilation
 ```
 
 <div display=flex align=center>
-  <img src="/Pictures/5.jpg" width="600px"/>
+  <img src="/Pictures/5.jpg" width="400px"/>
 </div>
 
 ### Step 8: All together for other images
@@ -139,19 +139,19 @@ def binarization_image(image, blur_value=5, kernel_erosion=(2, 2), kernel_dilati
 ```
 
 <div display=flex align=center>
-  <img src="/Pictures/51.jpg" width="600px"/>
+  <img src="/Pictures/number1.jpg" width="400px"/>
 </div>
 
 <div display=flex align=center>
-  <img src="/Pictures/6.jpg" width="600px"/>
+  <img src="/Pictures/6.jpg" width="400px"/>
 </div>
 
 <div display=flex align=center>
-  <img src="/Pictures/51.jpg" width="600px"/>
+  <img src="/Pictures/number2.jpg" width="400px"/>
 </div>
 
 <div display=flex align=center>
-  <img src="/Pictures/7.jpg" width="600px"/>
+  <img src="/Pictures/7.jpg" width="400px"/>
 </div>
 
 ## License
