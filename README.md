@@ -1,6 +1,11 @@
 # Digit-Binarization
 Binarization Digits of numbers and prepare digits for OCR or number detection and remove the noise and shadow (background) from the picture completely.
 
+<div display=flex align=center>
+    <img src="/Pictures/0.jpg" width="400px"/>
+    <img src="/Pictures/5.jpg" width="400px"/>
+</div>
+
 
 ## Tech :hammer_and_wrench: Languages and Tools :
 
